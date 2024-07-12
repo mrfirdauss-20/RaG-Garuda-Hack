@@ -107,7 +107,7 @@ def similarity(payload: Brief):
     global index
     prompt = f"""
         ### Brief:
-            {str}
+            {payload.prompt}
         ### Question:
             Please summarize the topic from brief above, make user it is compact such as "Young, Culinary" or "Sport, Old, Health and wellbeing" or "Beauty, Wellness, Woman" and etc        
     """
@@ -115,7 +115,7 @@ def similarity(payload: Brief):
     headers = {
         'Content-Type': 'application/json'
     }
-    data = {
+    payload = {
         "contents": [
             {
                 'role': 'user',
@@ -128,7 +128,7 @@ def similarity(payload: Brief):
         ]
     }
 
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(url, headers=headers, json=payload)
     if response.status_code == 200:
         keyword = response.json()["candidates"][0]["content"]["parts"][0]["text"]
         D, I = index.search(embed_text(keyword).numpy(), 3)
