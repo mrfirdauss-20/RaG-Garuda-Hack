@@ -18,4 +18,4 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           echo "$HF_TOKEN"
-          git push https://mrfirdauss:$HF_TOKEN@huggingface.co/spaces/mrfirdauss/endorse-rag main
+          git push https://mrfirdauss:$HF_TOKEN@huggingface.co/spaces/mrfirdauss/endorse-rag master
