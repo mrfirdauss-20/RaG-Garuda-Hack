@@ -13,6 +13,12 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t rsa huggingface.co >> ~/.ssh/known_hosts
       - name: Push to hub
         env: 
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
