@@ -1,3 +1,4 @@
-faiss
+faiss-cpu
+torch
 transformers
 fastapi
