@@ -17,5 +17,5 @@ jobs:
         env: 
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          example-command "$HF_TOKEN"
+          echo "$HF_TOKEN"
           git push https://mrfirdauss:$HF_TOKEN@huggingface.co/spaces/mrfirdauss/endorse-rag main
