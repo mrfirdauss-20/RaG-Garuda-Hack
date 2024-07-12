@@ -9,7 +9,6 @@ from pydantic import BaseModel
 import re
 
 os.environ['TRANSFORMERS_CACHE'] = '/transformers_cache'
-os.environ['HF_HOME'] = '/transformers_cache'
 
 import os
 API_KEY = os.getenv("API_KEY")
@@ -131,6 +130,7 @@ def similarity(payload: Brief):
     response = requests.post(url, headers=headers, json=payload)
     if response.status_code == 200:
         keyword = response.json()["candidates"][0]["content"]["parts"][0]["text"]
+        print(keyword)
         D, I = index.search(embed_text(keyword).numpy(), 3)
         retrieved_idx = [idxs[i] for i in I[0]]
         influencers = [data[i] for i in I[0]]
