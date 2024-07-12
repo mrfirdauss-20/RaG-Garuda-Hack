@@ -1,4 +1,6 @@
 faiss-cpu
 torch
 transformers
+sentence-transformers
 fastapi
+uvicorn[standard]

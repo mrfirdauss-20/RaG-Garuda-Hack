@@ -13,4 +13,4 @@ ENV TRANSFORMERS_CACHE=/transformers_cache
 
 RUN mkdir -p  /transformers_cache && chmod -R 777  /transformers_cache
 
-CMD ["uvicorn", "app:app", "--host", "--port", "7860"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
